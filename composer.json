@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "linkorb/lib-hl7-peri22x": "^1.2",
-        "linkorb/lib-peri22x": "^1.1",
+        "linkorb/lib-hl7-peri22x": "^2.0",
+        "linkorb/lib-peri22x": "^1.5",
         "pimple/pimple": "^3.0",
         "ralouphie/mimey": "^1.0"
     },

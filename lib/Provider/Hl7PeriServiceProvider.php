@@ -5,6 +5,7 @@ namespace LinkORB\Hl7Peri22x\Provider;
 use Hl7Peri22x\Document\DocumentFactory;
 use Hl7Peri22x\Dossier\DossierFactory;
 use Hl7Peri22x\Processor\ObservationProcessor;
+use Hl7Peri22x\Transformer\IdentityTransformer;
 use Mimey\MimeTypes;
 use Peri22x\Attachment\AttachmentFactory;
 use Peri22x\Resource\ResourceFactory;
@@ -19,13 +20,15 @@ class Hl7PeriServiceProvider implements ServiceProviderInterface
     {
         # the observation processor service
         $app['hl7peri.observation_processor.service'] = function ($app) {
+
             return new ObservationProcessor(
                 new DossierFactory(
                     new AttachmentFactory,
                     new DocumentFactory(new MimeTypes)
                 ),
                 new ResourceFactory,
-                new SectionFactory(new ValueFactory)
+                new SectionFactory(new ValueFactory),
+                new IdentityTransformer
             );
         };
     }
