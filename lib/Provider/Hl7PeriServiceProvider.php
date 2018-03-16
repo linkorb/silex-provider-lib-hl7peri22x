@@ -5,6 +5,7 @@ namespace LinkORB\Hl7Peri22x\Provider;
 use Hl7Peri22x\Document\DocumentFactory;
 use Hl7Peri22x\Dossier\DossierFactory;
 use Hl7Peri22x\Processor\ObservationProcessor;
+use Hl7Peri22x\TextFilter\EscapeSequenceFilter;
 use Hl7Peri22x\Transformer\IdentityTransformer;
 use Mimey\MimeTypes;
 use Peri22x\Attachment\AttachmentFactory;
@@ -28,7 +29,8 @@ class Hl7PeriServiceProvider implements ServiceProviderInterface
                 ),
                 new ResourceFactory,
                 new SectionFactory(new ValueFactory),
-                new IdentityTransformer
+                new IdentityTransformer,
+                new EscapeSequenceFilter
             );
         };
     }
